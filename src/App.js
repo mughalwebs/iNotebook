@@ -1,5 +1,4 @@
 import './App.css';
-import { QRCode } from 'react-qrcode-logo';
 
 function App() {
   return (

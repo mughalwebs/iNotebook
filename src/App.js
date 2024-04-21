@@ -4,7 +4,7 @@ import { QRCode } from 'react-qrcode-logo';
 function App() {
   return (
     <>
-      <h1>iNotebook</h1>
+      <h1>iNotebook Pending</h1>
     </>
   );
 }

@@ -4,10 +4,11 @@ const router = express.Router();
 const User = require('../models/User');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const SECRET_CODE = "Hamid#Raza";
+const fetchUser = require('../middleware/fetchUser')
 
-// Create POST request
+// Route # 1 : Create POST request of /createUser
 router.post('/createUser', [
     // Validation of name, email and password
     body('email', 'Enter a valid email address').isEmail(),
@@ -17,11 +18,11 @@ router.post('/createUser', [
     // Checking Result and calculating errors
     const error = validationResult(request);
     if (!error.isEmpty()) {
-        return response.status(400).json({ error: error.array() })
+        return response.status(400).json({ error: error.array() });
     }
     try {
         // If user with this email already exist then it shows error as following
-        let user = await User.findOne({ email: request.body.email })
+        let user = await User.findOne({ email: request.body.email });
         if (user) {
             return response.send("Sorry, The User with this Email already exist.");
         }
@@ -39,12 +40,54 @@ router.post('/createUser', [
                 id: user.id
             }
         }
-        const authToken = await jwt.sign(data, SECRET_CODE)
+        const authToken = jwt.sign(data, SECRET_CODE);
         response.json({ authToken });
     } catch (error) {
         console.error(error);
-        response.send("Error occurred due to some reason.")
+        response.send("Error occurred due to some reason.");
     }
 })
-
+// Route # 2 : Create a POST request of /login
+router.post('/login', [
+    // Validation of name, email and password
+    body('email', 'Enter a valid Email Address.').isEmail(),
+    body('email', 'Please Enter Password.').exists()
+], async (request, response) => {
+    const error = validationResult(request);
+    if (!error.isEmpty()) {
+        return response.json({ error: "Enter a Valid email address" });
+    }
+    try {
+        const { email, password } = request.body;
+        let user = await User.findOne({ email });
+        if (!user) {
+            return response.status(404).json({ error: "Please try to Login with correct credentials." });
+        }
+        const passwordCompare = bcrypt.compare(password, user.password);
+        if (!passwordCompare) {
+            return response.status(404).json({ error: "Please try to Login with correct credentials." });
+        }
+        const data = {
+            user: {
+                id: user.id
+            }
+        }
+        const authToken = jwt.sign(data, SECRET_CODE);
+        response.json({ authToken });
+    } catch (error) {
+        console.error(error);
+        response.send("Error occurred due to some reason.");
+    }
+})
+// Route # 3 : Create a POST request of /getUser
+router.post('/getUser', fetchUser, async (request, response) => {
+    try {
+        let userId = request.user.id;
+        const user = await User.findById(userId).select('-password');
+        response.send(user);
+    } catch (error) {
+        console.error(error);
+        response.send("Error occurred due to some reason.");
+    }
+})
 module.exports = router;

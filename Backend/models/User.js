@@ -1,7 +1,10 @@
+// import mongoose and Schema package
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+// Creating User Schema
 const userSchema = new Schema({
+    // Keeping the type, require and unique terms type and giving (true or false) values
     name: {
         type: String,
         require: true
@@ -20,6 +23,6 @@ const userSchema = new Schema({
         default: Date.now
     },
 })
+// Create model of User Schema and export it
 const User = mongoose.model("user", userSchema);
-User.createIndexes();
 module.exports = User;

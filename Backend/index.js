@@ -4,6 +4,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app.use(express.json())
 app.use('/api/auth', require('./routes/authentication'))
 // app.get('/api/notes', require('./routes/notes'))
 

@@ -1,16 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 
 export default function Navbar() {
+    let location = useLocation();
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
                 <div className="container-fluid">
                     <Link
                         to='/'
                         className="navbar-brand"
                     >
-                        Navbar
+                        iNotebook
                     </Link>
                     <button
                         aria-controls="navbarSupportedContent"
@@ -32,7 +34,7 @@ export default function Navbar() {
                                 <Link
                                     to='/'
                                     aria-current="page"
-                                    className="nav-link active"
+                                    className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
                                 >
                                     Home
                                 </Link>
@@ -40,7 +42,7 @@ export default function Navbar() {
                             <li className="nav-item">
                                 <Link
                                     to='/about'
-                                    className="nav-link"
+                                    className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
                                 >
                                     About
                                 </Link>

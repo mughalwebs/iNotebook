@@ -14,5 +14,5 @@ app.use('/api/notes', require('./routes/notes'))
 
 // If the App is proper running then the following line is executed
 app.listen(port, () => {
-    console.log(`Example app listening on port http://localhost:${port}`)
+    console.log(`iNotebook listening on port http://localhost:${port}`)
 })

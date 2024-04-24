@@ -6,7 +6,7 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const SECRET_CODE = "Hamid#Raza";
-const fetchUser = require('../middleware/fetchUser')
+const fetchUser = require('../middleware/fetchUser');
 
 // Route # 1 : Create POST request of /createUser
 router.post('/createUser', [

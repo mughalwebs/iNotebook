@@ -9,6 +9,7 @@ const port = 5000
 app.use(express.json())
 // If user hits the endpoint '/api/auth' then the user gets data of './routes/authentication'
 app.use('/api/auth', require('./routes/authentication'))
+app.use('/api/notes', require('./routes/notes'))
 // app.get('/api/notes', require('./routes/notes'))
 
 // If the App is proper running then the following line is executed

@@ -1,9 +1,7 @@
-import React, { useContext } from 'react'
-import NotesContext from '../Context/Notes/NoteContext'
+import React from 'react';
+import Notes from './Notes';
 
 export default function Home() {
-    let notesContext = useContext(NotesContext);
-    const { notes, setNotes } = notesContext;
     return (
         <>
             <h2 className='my-2'>Add a Note</h2>
@@ -23,17 +21,7 @@ export default function Home() {
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-            <h2 className='my-2'>Your Notes</h2>
-            {notes.map((note) => {
-                return (
-                    <>
-                        <h4>{1 + ". " + note.title}</h4>
-                        <p>Description : {note.description}</p>
-                        <pre>Tag : {note.tag}</pre>
-                        <pre>Saved on : {new Date(note.date).getDate().toString() + "/" + new Date(note.date).getMonth().toString() + "/" + new Date(note.date).getFullYear().toString()}</pre>
-                    </>
-                )
-            })}
+            <Notes />
         </>
     )
 }

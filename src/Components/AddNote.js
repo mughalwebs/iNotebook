@@ -5,8 +5,9 @@ export default function AddNote() {
     let notesContext = useContext(NotesContext);
     const { createNote } = notesContext;
     const [note, setNote] = useState({ title: "", description: '', tag: '' })
-    const createANewNote = () => {
-
+    const createANewNote = (e) => {
+        e.preventDefault();
+        createNote(note.title, note.description, note.tag);
     }
     const onChange = (e) => {
         setNote({...note, [e.target.name]: e.target.value})
@@ -27,7 +28,7 @@ export default function AddNote() {
                     <label htmlFor="tag" className="form-label">Tag</label>
                     <input type="text" className="form-control" id="tag" name="tag" onChange={onChange} />
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={createANewNote}>Submit</button>
+                <button type="submit" className="btn btn-primary" onClick={createANewNote}>Add</button>
             </form>
         </>
     )

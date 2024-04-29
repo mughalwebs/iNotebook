@@ -78,16 +78,17 @@ const NoteState = (props) => {
         const [notes, setNotes] = useState(initialNotes)
         // Create a Note - C
         const createNote = (title, description, tag) => {
+            console.log('Add Note Successfully.')
             const note = {
                 "_id": "66291b0a44b82099303c3b855",
                 "user": "66291ace44b82099303c3b88",
-                "title": "My Class [Added]",
-                "description": "I read in Pre Ist Year. [Added]",
-                "tag": "Personal Information",
+                "title": title,
+                "description": description,
+                "tag": tag,
                 "date": "2024-04-24T14:45:30.813Z",
                 "__v": 0
             }
-            setNotes(notes.push((note)))
+            setNotes(notes.concat((note)))
         }
         // Reading is from webpage - R
         // Update a Note - U

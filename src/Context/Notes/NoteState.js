@@ -79,10 +79,10 @@ const NoteState = (props) => {
         // Create a Note - C
         const createNote = (title, description, tag) => {
             const note = {
-                "_id": "66291b0a44b82099303c3b85",
+                "_id": "66291b0a44b82099303c3b855",
                 "user": "66291ace44b82099303c3b88",
-                "title": "My Class",
-                "description": "I read in Pre Ist Year.",
+                "title": "My Class [Added]",
+                "description": "I read in Pre Ist Year. [Added]",
                 "tag": "Personal Information",
                 "date": "2024-04-24T14:45:30.813Z",
                 "__v": 0

@@ -51,7 +51,7 @@ router.post('/createUser', [
 router.post('/login', [
     // Validation of name, email and password
     body('email', 'Enter a valid Email Address.').isEmail(),
-    body('email', 'Please Enter Password.').exists()
+    body('password', 'Please Enter Password.').exists()
 ], async (request, response) => {
     const error = validationResult(request);
     if (!error.isEmpty()) {

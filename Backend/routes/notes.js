@@ -14,7 +14,7 @@ router.get('/fetchAllNotes', fetchUser, async (request, response) => {
         response.status(500).send("Internal Server Error.");
     }
 })
-// Route # 2 : Adding Notes to database using endpoint (/fetchAllNotes)
+// Route # 2 : Adding Notes to database using endpoint (/addingNotes)
 router.post('/addingNotes', [
     body('title', "Enter Title in Notes.").isLength({ min: 1 }),
     body('description', "Description must be at least 5 characters..").isLength({ min: 1 })

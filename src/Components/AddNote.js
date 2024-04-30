@@ -28,7 +28,7 @@ export default function AddNote() {
                     <label htmlFor="tag" className="form-label">Tag</label>
                     <input type="text" className="form-control" id="tag" name="tag" onChange={onChange} />
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={createANewNote}>Add</button>
+                <button type="submit" className="btn btn-outline-primary" onClick={createANewNote}>Add Note</button>
             </form>
         </>
     )

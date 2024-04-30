@@ -5,8 +5,10 @@ connectToMongo();
 const express = require('express')
 const app = express()
 const port = 5000
+const cors = require('cors')
 // Use express.json() because of writing json on POST request
 app.use(express.json())
+app.use(cors());
 // If user hits the endpoint '/api/auth' then the user gets data of './routes/authentication'
 app.use('/api/auth', require('./routes/authentication'))
 app.use('/api/notes', require('./routes/notes'))

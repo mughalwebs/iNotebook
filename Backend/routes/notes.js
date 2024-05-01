@@ -11,13 +11,13 @@ router.get('/fetchAllNotes', fetchUser, async (request, response) => {
         response.send(notes);
     } catch (error) {
         console.error(error);
-        response.status(500).send("Internal Server Error.");
+        response.status(500).json({error: 'Internal Server Error.'});
     }
 })
 // Route # 2 : Adding Notes to database using endpoint (/addingNotes)
 router.post('/addingNotes', [
     body('title', "Enter Title in Notes.").isLength({ min: 1 }),
-    body('description', "Description must be at least 5 characters..").isLength({ min: 1 })
+    body('description', "Description must be at least 5 characters..").isLength({ min: 5 })
 ], fetchUser, async (request, response) => {
     try {
         const { title, description, tag } = request.body;
@@ -32,7 +32,7 @@ router.post('/addingNotes', [
         response.json(savedNote);
     } catch (error) {
         console.error(error);
-        response.status(500).send("Internal Server Error.");
+        response.status(500).json({error: 'Internal Server Error.'});
     }
 })
 // Route # 3 : Update an existing Notes using endpoint (/updateNotes)
@@ -60,7 +60,7 @@ router.put('/updateNotes/:id', fetchUser, async (request, response) => {
         response.json(note);
     } catch (error) {
         console.error(error);
-        response.status(500).send("Internal Server Error.");
+        response.status(500).json({error: 'Internal Server Error.'});
     }
 })
 // Route # 4 : Delete an existing Notes using endpoint (/deleteNotes)
@@ -77,7 +77,7 @@ router.delete('/deleteNotes/:id', fetchUser, async (request, response) => {
         response.json({ status: 200, description: 'Successfully Deleted.' });
     } catch (error) {
         console.error(error);
-        response.status(500).send("Internal Server Error.");
+        response.status(500).json({error: 'Internal Server Error.'});
     }
 })
 module.exports = router;

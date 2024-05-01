@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const notesSchema = new Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'ref'
+        ref: 'user'
     },
     title: {
         type: String,
@@ -12,8 +12,7 @@ const notesSchema = new Schema({
     },
     description: {
         type: String,
-        require: true,
-        unique: true
+        // require: true
     },
     tag: {
         type: String,

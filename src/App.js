@@ -9,18 +9,18 @@ import Alert from './Components/Alert';
 function App() {
   return (
     <>
-      <NoteState>
-        <Router>
-          <Navbar />
-          <Alert message={'Alert Message'}/>
-          <div className="container">
-            <Routes>
-              <Route exact path='/' element={<Home />} />
-              <Route exact path='/about' element={<About />} />
-            </Routes>
-          </div>
-        </Router>
-      </NoteState>
+        <NoteState>
+          <Router>
+            <Navbar />
+            <Alert message={'Alert Message'} />
+            <div className="container">
+              <Routes>
+                <Route exact path='/' element={<Home />} />
+                <Route exact path='/about' element={<About />} />
+              </Routes>
+            </div>
+          </Router>
+        </NoteState>
     </>
   );
 }

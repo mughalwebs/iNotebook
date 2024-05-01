@@ -1,3 +1,12 @@
-i {
+.edit-and-delete {
     cursor: pointer;
+    position: absolute;
+    left: 80%;
+    font-size: larger;
+}
+.move-to-left {
+    left: 70%;
+}
+.decrease-font-size {
+    font-size: smaller;
 }

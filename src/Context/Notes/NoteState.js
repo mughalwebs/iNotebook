@@ -14,16 +14,7 @@ const NoteState = (props) => {
             },
             body: JSON.stringify({ title: title, description: description, tag: tag })
         });
-        const json = await response.json();
-        const note = {
-            "_id": json._id,
-            "user": json.user,
-            "title": title,
-            "description": description,
-            "tag": tag,
-            "date": json.date,
-            "__v": json.__v
-        }
+        const note = await response.json();
         setNotes(notes.concat(note))
     }
     // Reading is from webpage - R

@@ -6,7 +6,7 @@ export default function Navbar() {
     let location = useLocation();
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+            <nav className="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
                 <div className="container-fluid">
                     <Link
                         to='/'
@@ -47,71 +47,14 @@ export default function Navbar() {
                                     About
                                 </Link>
                             </li>
-                            <li className="nav-item dropdown">
-                                <Link
-                                    aria-expanded="false"
-                                    className="nav-link dropdown-toggle"
-                                    data-bs-toggle="dropdown"
-                                    role="button"
-                                >
-                                    Dropdown
-                                </Link>
-                                <ul className="dropdown-menu">
-                                    <li>
-                                        <Link
-                                            className="dropdown-item"
-                                        >
-                                            Action
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            className="dropdown-item"
-                                        >
-                                            Another action
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <hr className="dropdown-divider" />
-                                    </li>
-                                    <li>
-                                        <Link
-                                            className="dropdown-item"
-                                        >
-                                            Something else here
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="nav-item">
-                                <Link
-                                    aria-disabled="true"
-                                    className="nav-link disabled"
-                                >
-                                    Disabled
-                                </Link>
-                            </li>
                         </ul>
-                        <form
-                            className="d-flex"
-                            role="search"
-                        >
-                            <input
-                                aria-label="Search"
-                                className="form-control me-2"
-                                placeholder="Search"
-                                type="search"
-                            />
-                            <button
-                                className="btn btn-outline-success"
-                                type="submit"
-                            >
-                                Search
-                            </button>
+                        <form className='d-flex'>
+                            <Link className="btn btn-primary mx-2" to='/login' role="button">Login</Link>
+                            <Link className="btn btn-primary mx-2" to='/signup' role="button">Signup</Link>
                         </form>
                     </div>
                 </div>
-            </nav>
+            </nav >
         </>
     )
 }

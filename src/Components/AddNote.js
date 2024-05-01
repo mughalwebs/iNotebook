@@ -1,34 +1,51 @@
 import React, { useContext, useState } from 'react'
 import NotesContext from '../Context/Notes/NoteContext'
+import AlertVarsContext from '../Context/AlertVariables/AlertVarsContext';
 
 export default function AddNote() {
+    const alertContext = useContext(AlertVarsContext);
+    const { setAlertStatus, setAlertMessage, settingAlertMessageLoading } = alertContext;
     let notesContext = useContext(NotesContext);
     const { createNote } = notesContext;
     const [note, setNote] = useState({ title: "", description: '', tag: '' })
     const createANewNote = (e) => {
         e.preventDefault();
         createNote(note.title, note.description, note.tag);
+        setAlertStatus('success');
+        setAlertMessage('Successfully Created a Note.');
+        settingAlertMessageLoading();
+        setNote({ title: "", description: '', tag: '' });
     }
     const onChange = (e) => {
-        setNote({...note, [e.target.name]: e.target.value})
+        setNote({ ...note, [e.target.name]: e.target.value })
     }
     return (
         <>
             <h2 className='my-2'>Add a Note</h2>
             <form className='my-3'>
-                <div className="mb-3">
-                    <label htmlFor="title" className="form-label">Title</label>
-                    <input type="text" className="form-control" id="title" name='title' aria-describedby="emailHelp" onChange={onChange} />
+                <div className="form-floating mb-3">
+                    <input type="text" className="form-control" id="title" placeholder="My Note" name='title' aria-describedby="emailHelp" onChange={onChange} minLength={3} required value={note.title} />
+                    <label htmlFor="title">Title</label>
+                    {note.title.length >= 3 ? '' :
+                        <div id="emailHelp" className="form-text ms-1">
+                            <i className="fa-solid fa-triangle-exclamation"></i>
+                            &ensp;Title must Contains at least 5 characters.
+                        </div>}
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="description" className="form-label">Description</label>
-                    <input type="text" className="form-control" id="description" name="description" onChange={onChange} />
+                <div className="form-floating mb-3">
+                    <input type="text" className="form-control" id="description" placeholder="My Description" name='description' onChange={onChange} minLength={5} required value={note.description} />
+                    <label htmlFor="title">Description</label>
+                    {note.description.length >= 5 ? '' :
+                        <div id="emailHelp" className="form-text ms-1">
+                            <i className="fa-solid fa-triangle-exclamation"></i>
+                            &ensp;Description must Contains at least 5 characters.
+                        </div>}
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="tag" className="form-label">Tag</label>
-                    <input type="text" className="form-control" id="tag" name="tag" onChange={onChange} />
+                <div className="form-floating mb-3">
+                    <input type="text" className="form-control mb-2" id="tag" placeholder="My Tag" name='tag' onChange={onChange} minLength={3} required value={note.tag} />
+                    <label htmlFor="title">Tag</label>
                 </div>
-                <button type="submit" className="btn btn-outline-primary" onClick={createANewNote}>Add Note</button>
+                <button type="submit" className="btn btn-outline-primary" onClick={createANewNote} disabled={note.title.length >= 3 && note.description.length >= 5 ? false : true}>Add Note</button>
             </form>
         </>
     )

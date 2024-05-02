@@ -26,8 +26,10 @@ export default function AddNote() {
                 <div className="form-floating mb-3">
                     <input type="text" className="form-control" id="title" placeholder="My Note" name='title' aria-describedby="emailHelp" onChange={onChange} minLength={3} required value={note.title} />
                     <label htmlFor="title">Title</label>
-                    {note.title.length >= 3 ? '' :
-                        <div id="emailHelp" className="form-text ms-1">
+                    {note.title.length >= 3 ? <div id="emailHelp" className="form-text ms-1 text-success">
+                        &ensp;Title <i className="fa-solid fa-circle-check"></i>
+                    </div> :
+                        <div id="emailHelp" className="form-text ms-1 text-danger">
                             <i className="fa-solid fa-triangle-exclamation"></i>
                             &ensp;Title must Contains at least 5 characters.
                         </div>}
@@ -35,8 +37,10 @@ export default function AddNote() {
                 <div className="form-floating mb-3">
                     <input type="text" className="form-control" id="description" placeholder="My Description" name='description' onChange={onChange} minLength={5} required value={note.description} />
                     <label htmlFor="title">Description</label>
-                    {note.description.length >= 5 ? '' :
-                        <div id="emailHelp" className="form-text ms-1">
+                    {note.description.length >= 5 ? <div id="emailHelp" className="form-text ms-1 text-success">
+                        &ensp;Decription <i className="fa-solid fa-circle-check"></i>
+                    </div> :
+                        <div id="emailHelp" className="form-text ms-1 text-danger">
                             <i className="fa-solid fa-triangle-exclamation"></i>
                             &ensp;Description must Contains at least 5 characters.
                         </div>}

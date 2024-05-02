@@ -2,7 +2,7 @@ import { useState } from "react";
 import AlertVarsContext from "./AlertVarsContext";
 const AlertVarsState = (props) => {
     const [alertStatus, setAlertStatus] = useState('primary');
-    const [alertMessage, setAlertMessage] = useState('primary');
+    const [alertMessage, setAlertMessage] = useState('Alert Message');
     const [alertMessageLoading, setAlertMessageLoading] = useState(false);
     const settingAlertMessageLoading = () => {
         setAlertMessageLoading(true);

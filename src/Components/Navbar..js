@@ -10,7 +10,7 @@ export default function Navbar() {
                 <div className="container-fluid">
                     <Link
                         to='/'
-                        className="navbar-brand"
+                        className="navbar-brand fs-4 fw-bold"
                     >
                         iNotebook
                     </Link>
@@ -36,7 +36,7 @@ export default function Navbar() {
                                     aria-current="page"
                                     className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
                                 >
-                                    Home
+                                    <i className="fa-solid fa-house-laptop fs-3"></i>
                                 </Link>
                             </li>
                             <li className="nav-item">
@@ -44,13 +44,13 @@ export default function Navbar() {
                                     to='/about'
                                     className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
                                 >
-                                    About
+                                    <i className="fa-solid fa-circle-info fs-3 mx-2"></i>
                                 </Link>
                             </li>
                         </ul>
                         <form className='d-flex'>
-                            <Link className="btn btn-primary mx-2" to='/login' role="button">Login</Link>
-                            <Link className="btn btn-primary mx-2" to='/signup' role="button">Signup</Link>
+                            <Link className="btn btn-primary mx-1" to='/login' role="button">Login</Link>
+                            <Link className="btn btn-primary mx-1" to='/signup' role="button">Signup</Link>
                         </form>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ export default function NoteItem(props) {
     const { note, updateNote, deleteNote } = props;
     const deletingNote = () => {
         deleteNote(note._id);
-        setAlertStatus('danger');
+        setAlertStatus('warning');
         setAlertMessage('Successfully Deleted the Note.');
         settingAlertMessageLoading();
     }

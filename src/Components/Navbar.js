@@ -10,6 +10,7 @@ export default function Navbar() {
     let location = useLocation();
     const handleOnLogout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('id');
         location.pathname = '/login';
         setAlertStatus('warning');
         setAlertMessage('Successfully Logged Out. Please Login Again to Edit the Note.');

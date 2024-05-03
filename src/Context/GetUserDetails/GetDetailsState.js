@@ -1,5 +1,5 @@
 import { useState } from "react";
-import getDetailsContext from "./GetDetailsContext";
+import GetDetailsContext from "./GetDetailsContext";
 
 const GetDetailsState = (props) => {
     let host = 'http://localhost:5000';
@@ -14,13 +14,12 @@ const GetDetailsState = (props) => {
             body: JSON.stringify({ id: localStorage.getItem('id') })
         })
         const json = await response.json();
-        setUserDetails(json);
-        console.log(userDetails);
+        setUserDetails({name: json.name, email: json.email, date: json.date});
     }
     return (
-        <getDetailsContext.Provider value={{ userDetails, getDetails }}>
+        <GetDetailsContext.Provider value={{ userDetails, getDetails }}>
             {props.children}
-        </getDetailsContext.Provider>
+        </GetDetailsContext.Provider>
     )
 }
 

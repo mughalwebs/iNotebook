@@ -19,8 +19,7 @@ const LoginState = (props) => {
         const json = await response.json();
         if (json.success) {
             localStorage.setItem('token', json.authToken);
-            localStorage.setItem('id', json._id);
-            console.log(json)
+            localStorage.setItem('id', json.userId);
             setAlertStatus('success');
             setAlertMessage('Successfully Logged into iNotebook.');
             settingAlertMessageLoading();

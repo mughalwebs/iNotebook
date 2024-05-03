@@ -13,12 +13,15 @@ const GetDetailsState = (props) => {
             },
             body: JSON.stringify({ id: localStorage.getItem('id') })
         })
+        const json = await response.json();
+        setUserDetails(json);
+        console.log(userDetails);
     }
     return (
-        <getDetailsContext.Provider value={{ getDetails }}>
+        <getDetailsContext.Provider value={{ userDetails, getDetails }}>
             {props.children}
         </getDetailsContext.Provider>
     )
 }
 
-export default GetDetailsState; 
+export default GetDetailsState;

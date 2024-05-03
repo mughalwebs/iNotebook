@@ -45,7 +45,7 @@ router.post('/createUser', [
         }
         success = true;
         const authToken = jwt.sign(data, SECRET_CODE);
-        response.json({ success: success, authToken });
+        response.json({ success: success, authToken, userId: user._id });
     } catch (error) {
         console.error(error);
         response.send("Error occurred due to some reason.");
@@ -82,7 +82,7 @@ router.post('/login', [
         }
         const authToken = jwt.sign(data, SECRET_CODE);
         success = true;
-        response.json({ success: success, authToken });
+        response.json({ success: success, authToken, userId: user._id });
     } catch (error) {
         console.error(error);
         response.send("Error occurred due to some reason.");

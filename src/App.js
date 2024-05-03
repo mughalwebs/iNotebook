@@ -13,10 +13,13 @@ import SignupState from './Context/Authentication/SignupState';
 import IsLoginState from './Context/isLogin/isLoginState';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import UserDetails from './Components/UserDetails';
+import GetDetailsState from './Context/GetUserDetails/GetDetailsState';
 
 function App() {
   return (
     <>
+    <GetDetailsState>
       <IsLoginState>
         <AlertVarsState>
           <NoteState>
@@ -31,6 +34,7 @@ function App() {
                       <Route exact path='/about' element={<About />} />
                       <Route exact path='/login' element={<Login />} />
                       <Route exact path='/signup' element={<Signup />} />
+                      <Route exact path='/userDetails' element={<UserDetails />} />
                     </Routes>
                   </div>
                 </SignupState>
@@ -39,6 +43,7 @@ function App() {
           </NoteState>
         </AlertVarsState>
       </IsLoginState>
+    </GetDetailsState>
     </>
   );
 }

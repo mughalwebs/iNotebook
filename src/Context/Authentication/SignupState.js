@@ -18,6 +18,7 @@ const SignupState = (props) => {
         })
         const json = await response.json();
         if (json.success) {
+            localStorage.setItem('id', json._id);
             localStorage.setItem('token', json.authToken);
             setAlertStatus('success');
             setAlertMessage('Successfully Created an Account.');

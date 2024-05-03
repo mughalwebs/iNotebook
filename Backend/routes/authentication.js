@@ -91,7 +91,7 @@ router.post('/login', [
 // Route # 3 : Create a POST request of /getUser
 router.post('/getUser', fetchUser, async (request, response) => {
     try {
-        let userId = request.user.id;
+        let userId = request.body.id;
         const user = await User.findById(userId).select('-password');
         response.send(user);
     } catch (error) {

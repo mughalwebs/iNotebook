@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Navbar from './Components/Navbar.';
+import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import About from './Components/About';
 import NoteState from './Context/Notes/NoteState';
@@ -10,30 +10,35 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import LoginState from './Context/Authentication/LoginState';
 import SignupState from './Context/Authentication/SignupState';
+import IsLoginState from './Context/isLogin/isLoginState';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
   return (
     <>
-      <AlertVarsState>
-        <NoteState>
-          <Router>
-            <LoginState>
-              <SignupState>
-                <Navbar />
-                <Alert />
-                <div className="container">
-                  <Routes>
-                    <Route exact path='/' element={<Home />} />
-                    <Route exact path='/about' element={<About />} />
-                    <Route exact path='/login' element={<Login />} />
-                    <Route exact path='/signup' element={<Signup />} />
-                  </Routes>
-                </div>
-              </SignupState>
-            </LoginState>
-          </Router>
-        </NoteState>
-      </AlertVarsState>
+      <IsLoginState>
+        <AlertVarsState>
+          <NoteState>
+            <Router>
+              <LoginState>
+                <SignupState>
+                  <Navbar />
+                  <Alert />
+                  <div className="container">
+                    <Routes>
+                      <Route exact path='/' element={<Home />} />
+                      <Route exact path='/about' element={<About />} />
+                      <Route exact path='/login' element={<Login />} />
+                      <Route exact path='/signup' element={<Signup />} />
+                    </Routes>
+                  </div>
+                </SignupState>
+              </LoginState>
+            </Router>
+          </NoteState>
+        </AlertVarsState>
+      </IsLoginState>
     </>
   );
 }

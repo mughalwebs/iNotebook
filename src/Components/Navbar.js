@@ -1,16 +1,27 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useLocation } from 'react-router-dom';
+import React, { useContext } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import isLoginContext from '../Context/isLogin/isLoginContext';
+import AlertVarsContext from '../Context/AlertVariables/AlertVarsContext';
 
 export default function Navbar() {
+    const alertContext = useContext(AlertVarsContext);
+    const { setAlertStatus, setAlertMessage, settingAlertMessageLoading } = alertContext;
+    const { isLogin } = useContext(isLoginContext);
     let location = useLocation();
+    const handleOnLogout = () => {
+        localStorage.removeItem('token');
+        location.pathname = '/login';
+        setAlertStatus('warning');
+        setAlertMessage('Successfully Logged Out. Please Login Again to Edit the Note.');
+        settingAlertMessageLoading();
+    }
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
                 <div className="container-fluid">
                     <Link
                         to='/'
-                        className="navbar-brand fs-4 fw-bold"
+                        className="navbar-brand fs-4 fw-bold remove-typing-cursor"
                     >
                         iNotebook
                     </Link>
@@ -48,10 +59,21 @@ export default function Navbar() {
                                 </Link>
                             </li>
                         </ul>
-                        <form className='d-flex'>
-                            <Link className="btn btn-primary mx-1" to='/login' role="button">Login</Link>
-                            <Link className="btn btn-primary mx-1" to='/signup' role="button">Signup</Link>
-                        </form>
+                        {isLogin ?
+                            <div>
+                                <Link to='/userDetails' className='mx-2 fs-4 btn btn-info'>
+                                    <i className="fa-solid fa-user"></i>
+                                </Link>
+                                <i className="fa-solid fa-right-from-bracket mx-2 me-3 fs-4 btn btn-warning" onClick={handleOnLogout}></i>
+                            </div>
+                            : <div>
+                                <Link className="mx-2 me-3 fs-4 btn btn-light" to='/login'>
+                                    <i className="fa-solid fa-right-to-bracket"></i>
+                                </Link>
+                                <Link className="mx-2 me-3 text-white fs-4 btn btn-primary" to='/signup'>
+                                    <i className="fa-solid fa-user-plus"></i>
+                                </Link>
+                            </div>}
                     </div>
                 </div>
             </nav >

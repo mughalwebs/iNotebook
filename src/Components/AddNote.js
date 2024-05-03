@@ -21,33 +21,33 @@ export default function AddNote() {
     }
     return (
         <>
-            <h2 className='my-2'>Add a Note</h2>
+            <h2 className='my-2 remove-typing-cursor'>Add a Note</h2>
             <form className='my-3'>
                 <div className="form-floating mb-3">
-                    <input type="text" className="form-control" id="title" placeholder="My Note" name='title' aria-describedby="emailHelp" onChange={onChange} minLength={3} required value={note.title} />
-                    <label htmlFor="title">Title</label>
-                    {note.title.length >= 3 ? <div id="emailHelp" className="form-text ms-1 text-success">
+                    <input type="text" className="form-control remove-typing-cursor" id="title" placeholder="My Note" name='title' aria-describedby="emailHelp" onChange={onChange} minLength={3} required value={note.title} />
+                    <label htmlFor="title" className='remove-typing-cursor'>Title</label>
+                    {note.title.length >= 3 ? <div id="emailHelp" className="form-text ms-1 text-success remove-typing-cursor">
                         &ensp;Title <i className="fa-solid fa-circle-check"></i>
                     </div> :
-                        <div id="emailHelp" className="form-text ms-1 text-danger">
+                        <div id="emailHelp" className="form-text ms-1 text-danger remove-typing-cursor">
                             <i className="fa-solid fa-triangle-exclamation"></i>
-                            &ensp;Title must Contains at least 5 characters.
+                            &ensp;Title must Contains at least 3 characters.
                         </div>}
                 </div>
                 <div className="form-floating mb-3">
-                    <input type="text" className="form-control" id="description" placeholder="My Description" name='description' onChange={onChange} minLength={5} required value={note.description} />
-                    <label htmlFor="title">Description</label>
-                    {note.description.length >= 5 ? <div id="emailHelp" className="form-text ms-1 text-success">
+                    <input type="text" className="form-control remove-typing-cursor" id="description" placeholder="My Description" name='description' onChange={onChange} minLength={5} required value={note.description} />
+                    <label htmlFor="title" className='remove-typing-cursor'>Description</label>
+                    {note.description.length >= 5 ? <div id="emailHelp" className="form-text ms-1 text-success remove-typing-cursor">
                         &ensp;Decription <i className="fa-solid fa-circle-check"></i>
                     </div> :
-                        <div id="emailHelp" className="form-text ms-1 text-danger">
+                        <div id="emailHelp" className="form-text ms-1 text-danger remove-typing-cursor">
                             <i className="fa-solid fa-triangle-exclamation"></i>
                             &ensp;Description must Contains at least 5 characters.
                         </div>}
                 </div>
                 <div className="form-floating mb-3">
-                    <input type="text" className="form-control mb-2" id="tag" placeholder="My Tag" name='tag' onChange={onChange} minLength={3} required value={note.tag} />
-                    <label htmlFor="title">Tag</label>
+                    <input type="text" className="form-control mb-2 remove-typing-cursor" id="tag" placeholder="My Tag" name='tag' onChange={onChange} minLength={3} required value={note.tag} />
+                    <label htmlFor="title" className='remove-typing-cursor'>Tag</label>
                 </div>
                 <button type="submit" className="btn btn-outline-primary" onClick={createANewNote} disabled={note.title.length >= 3 && note.description.length >= 5 ? false : true}>Add Note</button>
             </form>

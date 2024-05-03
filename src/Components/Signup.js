@@ -13,30 +13,31 @@ export default function Signup() {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   }
   return (
-    <>
+    <div>
+      <h2 className='my-3 remove-typing-cursor'>Signup to Save Your Informations.</h2>
       <form onSubmit={signingUp} className='mt-2'>
         <div className="my-3">
-          <label htmlFor="name" className="form-label">Name</label>
-          <input type="text" name='name' className="form-control" id="name" placeholder="Name" onChange={onChange} />
+          <label htmlFor="name" className="form-label remove-typing-cursor">Name</label>
+          <input type="text" name='name' className="form-control remove-typing-cursor" id="name" placeholder="Name" onChange={onChange} />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+          <label htmlFor="exampleInputEmail1" className="form-label remove-typing-cursor">Email address</label>
           <input type="email" name='email' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={onChange} />
-          <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+          <div id="emailHelp" className="form-text remove-typing-cursor">We'll never share your email with anyone else.</div>
         </div>
-        <label htmlFor="inputPassword5" className="form-label">Password</label>
+        <label htmlFor="inputPassword5" className="form-label remove-typing-cursor">Password</label>
         <input type="password" name='password' id="inputPassword5" className="form-control" aria-describedby="passwordHelpBlock" onChange={onChange} />
-        <div id="passwordHelpBlock" className="form-text">
+        <div id="passwordHelpBlock" className="form-text remove-typing-cursor">
           Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
         </div>
-        <label htmlFor="inputCPassword5" className="form-label">Confirm Password</label>
+        <label htmlFor="inputCPassword5" className="form-label remove-typing-cursor">Confirm Password</label>
         <input type="password" name='cpassword' id="inputCPassword5" className="form-control" aria-describedby="passwordHelpBlock" onChange={onChange} disabled={credentials.password.length === 0}/>
-        {credentials.password !== credentials.cpassword ? <div id="passwordHelpBlock" className="form-text text-danger">
+        {credentials.password !== credentials.cpassword ? <div id="passwordHelpBlock" className="form-text text-danger remove-typing-cursor">
           <i className="fa-solid fa-triangle-exclamation"></i>&ensp;Password Must be Matched.
-        </div> : credentials.password.length > 0 ? <div id="passwordHelpBlock" className="form-text text-success"><i className="fa-solid fa-circle-check"></i>&ensp;Password Matched Successfully.
+        </div> : credentials.password.length > 0 ? <div id="passwordHelpBlock" className="form-text text-success remove-typing-cursor"><i className="fa-solid fa-circle-check"></i>&ensp;Password Matched Successfully.
         </div> : ''}
         <button className="btn btn-outline-primary float-end mt-2" type="submit" disabled={credentials.password !== credentials.cpassword || credentials.name.length === 0 || credentials.email.length === 0 || credentials.password.length === 0}>Signup</button>
       </form>
-    </>
+    </div>
   )
 }

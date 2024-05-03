@@ -3,15 +3,26 @@ import NotesContext from '../Context/Notes/NoteContext'
 import NoteItem from './NoteItem';
 import AddNote from './AddNote';
 import AlertVarsContext from '../Context/AlertVariables/AlertVarsContext';
+import { useNavigate } from 'react-router-dom';
+import isLoginContext from '../Context/isLogin/isLoginContext';
 
 export default function Notes() {
+    const loginInfo = useContext(isLoginContext);
+    const { setIsLogin } = loginInfo;
+    const navigation = useNavigate();
     const alertContext = useContext(AlertVarsContext);
     const { setAlertStatus, setAlertMessage, settingAlertMessageLoading } = alertContext;
     let notesContext = useContext(NotesContext);
     const [note, setNote] = useState({ id: '', eTitle: "", eDescription: '', eTag: '' })
     const { notes, getNote, deleteNote, updateNote } = notesContext;
     useEffect(() => {
-        getNote();
+        if (localStorage.getItem('token')) {
+            setIsLogin(true);
+            getNote();
+        } else {
+            navigation('/login');
+            setIsLogin(false);
+        }
         // eslint-disable-next-line
     }, [notes])
     const ref = useRef(null);
@@ -75,7 +86,7 @@ export default function Notes() {
                     </div>
                 </div>
             </div>
-            <div className='row'>
+            <div className='row remove-typing-cursor'>
                 <h2>Your Notes</h2>
                 <div className="container">
                     {notes && notes.length === 0 && <h6 className='ms-3'>No Notes Found</h6>}

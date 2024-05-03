@@ -8,7 +8,7 @@ const AlertVarsState = (props) => {
         setAlertMessageLoading(true);
         setTimeout(() => {
             setAlertMessageLoading(false);
-        }, 2000);
+        }, 3000);
     }
     return (
         <AlertVarsContext.Provider value={{ alertStatus, setAlertStatus, alertMessage, setAlertMessage, alertMessageLoading, settingAlertMessageLoading }}>

@@ -24,7 +24,7 @@ function App() {
       <IsLoginState>
         <AlertVarsState>
           <NoteState>
-            <Router>
+            <Router basename='/iNotebook'>
               <LoginState>
                 <SignupState>
                   <Navbar />

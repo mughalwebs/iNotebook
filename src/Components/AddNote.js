@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import NotesContext from '../Context/Notes/NoteContext'
 import AlertVarsContext from '../Context/AlertVariables/AlertVarsContext';
+import { Tooltip } from 'react-tooltip';
 
 export default function AddNote() {
     const alertContext = useContext(AlertVarsContext);
@@ -49,7 +50,14 @@ export default function AddNote() {
                     <input type="text" className="form-control mb-2 remove-typing-cursor" id="tag" placeholder="My Tag" name='tag' onChange={onChange} minLength={3} required value={note.tag} />
                     <label htmlFor="title" className='remove-typing-cursor'>Tag</label>
                 </div>
-                <button type="submit" className="btn btn-outline-primary" onClick={createANewNote} disabled={note.title.length >= 3 && note.description.length >= 5 ? false : true}>Add Note</button>
+                <button data-tooltip-id='addNote' type="submit" className="btn btn-outline-primary" onClick={createANewNote} disabled={note.title.length >= 3 && note.description.length >= 5 ? false : true}>
+                    <i className="fa-solid fa-square-plus"></i>
+                </button>
+                <Tooltip id='addNote' place='right' content='Add Note' style={{
+                    color: 'white',
+                    backgroundColor: '#0D6EFD',
+                    borderRadius: '5px',
+                }} />
             </form>
         </>
     )

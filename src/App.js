@@ -15,6 +15,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import UserDetails from './Components/UserDetails';
 import GetDetailsState from './Context/GetUserDetails/GetDetailsState';
+import 'react-tooltip/dist/react-tooltip.css'
 
 function App() {
   return (

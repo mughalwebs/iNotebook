@@ -1,6 +1,6 @@
 // import mongoose package and initializing mongoURI
 const mongoose = require("mongoose");
-const mongoURI = 'mongodb://localhost:27017/iNotebook';
+const mongoURI = 'mongodb+srv://iNotebook_CURD_of_Notes:$iNotebook.786$@inotebook.nu3ietb.mongodb.net/iNotebook';
 // The following function connects backend to MongoDB (database)
 const connectToMongos = () => {
     mongoose.connect(mongoURI)

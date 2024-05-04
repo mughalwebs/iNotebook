@@ -13,7 +13,7 @@ export default function UserDetails() {
     const year = new Date((userDetails.date).substr(0, userDetails.date.length - 5)).getFullYear().toString();
     const month = (new Date((userDetails.date).substr(0, userDetails.date.length - 5)).getMonth() + 1).toString();
     const day = new Date((userDetails.date).substr(0, userDetails.date.length - 5)).getDate().toString();
-    const date = `${day > 9 ? day : `0${day}`}-${month > 9 ? month : `0${month}`}-${year}`
+    const date = `${month > 9 ? month : `0${month}`}-${day > 9 ? day : `0${day}`}-${year}`
     const exportDetils = () => {
         const content = `Name: ${userDetails.name}\n\nEmail: ${userDetails.email}\n\nAccount Created On: ${date}`
         const blob = new Blob([content], { type: 'plain/text' });

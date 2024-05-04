@@ -4,13 +4,21 @@
     left: 80%;
     font-size: larger;
 }
+
 .remove-typing-cursor {
     cursor: default;
     user-select: none;
 }
+
 .move-to-left {
     left: 65%;
 }
+
 .decrease-font-size {
     font-size: smaller;
+}
+
+Tooltip {
+    user-select: none;
+    cursor: default;
 }
